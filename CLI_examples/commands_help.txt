@@ -1,0 +1,9 @@
+1. Create a VPC
+
+aws ec2 create-vpc --cidr-block 10.0.0.0/16
+
+2. Create a VPC with dedicated tenancy
+
+aws ec2 create-vpc --cidr-block 10.0.0.0/16 --instance-tenancy dedicated
+
+3.
