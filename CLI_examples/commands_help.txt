@@ -6,4 +6,29 @@ aws ec2 create-vpc --cidr-block 10.0.0.0/16
 
 aws ec2 create-vpc --cidr-block 10.0.0.0/16 --instance-tenancy dedicated
 
-3.
+3. Create a VPC with an IPv6 CIDR block
+
+aws ec2 create-vpc --cidr-block 10.0.0.0/16 --amazon-provided-ipv6-cidr-block
+
+4. To create an endpoint
+
+aws ec2 create-vpc-endpoint --vpc-id vpc-1a2b3c4d --service-name com.amazonaws.us-east-1.s3 --route-table-ids rtb-11aa22bb
+
+5. To create a VPC peering connection between your VPCs
+
+aws ec2 create-vpc-peering-connection --vpc-id vpc-1a2b3c4d --peer-vpc-id vpc-11122233
+
+6. To create a VPC peering connection with a VPC in another account
+
+aws ec2 create-vpc-peering-connection --vpc-id vpc-1a2b3c4d --peer-vpc-id vpc-11122233 --peer-owner-id 123456789012
+
+7. To create a VPN connection with dynamic routing
+
+aws ec2 create-vpn-connection --type ipsec.1 --customer-gateway-id cgw-0e11f167 --vpn-gateway-id vgw-9a4cacf3
+
+8. To create a static route for a VPN connection
+
+aws ec2 create-vpn-connection-route --vpn-connection-id vpn-40f41529 --destination-cidr-block 11.12.0.0/16
+
+9. To create a virtual private gateway
+
