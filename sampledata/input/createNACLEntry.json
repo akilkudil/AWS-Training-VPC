@@ -1,0 +1,18 @@
+{
+    "DryRun": true, 
+    "NetworkAclId": "", 
+    "RuleNumber": 0, 
+    "Protocol": "", 
+    "RuleAction": "", 
+    "Egress": true, 
+    "CidrBlock": "", 
+    "Ipv6CidrBlock": "", 
+    "IcmpTypeCode": {
+        "Type": 0, 
+        "Code": 0
+    }, 
+    "PortRange": {
+        "From": 0, 
+        "To": 0
+    }
+}

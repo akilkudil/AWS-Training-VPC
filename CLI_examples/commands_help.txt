@@ -21,6 +21,74 @@ aws ec2 create-subnet --vpc-id  "vpc-b774aace" --cidr-block "10.16.2.0/24"  --av
 aws ec2 delete-vpc  --vpc-id vpc-7c6ab405
 
 7. Create route table (a default route table is created during vpc creation)
+
+ aws ec2 create-route-table --vpc-id vpc-b774aace  >>  c:/Users/admin/AWS-Training-VPC/sampledata/output/createRouteTable.json
+
+
+
+8. Associate subnet (say our subnet2 id = subnet-2b8a2c07) with the above route table (say route table id = rtb-0068f078)
+
+aws ec2 associate-route-table --route-table-id  rtb-0068f078 --subnet-id subnet-2b8a2c07 >>  c:/Users/admin/AWS-Training-VPC/sampledata/output/associateRouteTable.json
+
+9. Dissociate subnet from route table
+
+aws ec2 disassociate-route-table --association-id rtbassoc-802b6efb
+
+10. Create Internet Gateway
+
+aws ec2 create-internet-gateway >> c:/Users/admin/AWS-Training-VPC/sampledata/output/createInternetGateway.json
+
+11. Attach Internet Gateway to VPC (An Internet gateway already attached to an vpc cannot be attached to another vpc)
+
+aws ec2 attach-internet-gateway --internet-gateway-id   igw-b946d3df   --vpc-id vpc-b774aace >> c:/Users/admin/AWS-Training-VPC/sampledata/output/attachInternetGateway.json
+
+12. Detach Internet Gateway
+
+aws ec2 detach-internet-gateway     --internet-gateway-id        igw-b946d3df                  --vpc-id  vpc-b774aace 
+
+13.  Create Route   (To create new route you need a Internet Gateway, Network Interface, or Virtual Private Gateway as targets.)
+
+aws ec2 create-route --route-table-id  rtb-714cd209 --destination-cidr-block 0.0.0.0/0 --gateway-id igw-b946d3df
+
+
+14. Create NACL
+
+aws ec2  create-network-acl  --vpc-id vpc-b774aace >> c:/Users/admin/AWS-Training-VPC/sampledata/output/createNetworkACL.json
+
+15. Create NACL entry (to add a allow or deny rule)
+
+aws ec2 create-network-acl-entry --network-acl-id    acl-f769128e   --ingress  --rule-number 50 --protocol all --port-range From=0,To=65535 --cidr-block 10.16.2.251/32 --rule-action deny
+
+aws ec2 create-network-acl-entry --network-acl-id    acl-f769128e   --exgress  --rule-number 50 --protocol all --port-range From=0,To=65535 --cidr-block 10.16.2.251/32 --rule-action deny
+
+16. Modify NACL Entry
+
+aws ec2 replace-network-acl-entry --network-acl-id    acl-f769128e   --ingress  --rule-number 100 --protocol all --port-range From=0,To=65535 --cidr-block 10.16.2.0/24 --rule-action allow
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+15. Delete route table
+
+aws ec2  delete-route-table --route-table-id    rtb-4069f138
+
+
+
+
+
+9. aws ec2 associate-route-table --route-table-id rtb-22574640 --subnet-id subnet-9d4a7b6c
  
 
 

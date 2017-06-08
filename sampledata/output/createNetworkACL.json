@@ -1,0 +1,39 @@
+{
+    "NetworkAcl": {
+        "Associations": [], 
+        "NetworkAclId": "acl-7e551007", 
+        "VpcId": "vpc-b774aace", 
+        "Tags": [], 
+        "Entries": [
+            {
+                "CidrBlock": "0.0.0.0/0", 
+                "RuleNumber": 32767, 
+                "Protocol": "-1", 
+                "Egress": true, 
+                "RuleAction": "deny"
+            }, 
+            {
+                "Ipv6CidrBlock": "::/0", 
+                "RuleNumber": 32768, 
+                "Protocol": "-1", 
+                "Egress": true, 
+                "RuleAction": "deny"
+            }, 
+            {
+                "CidrBlock": "0.0.0.0/0", 
+                "RuleNumber": 32767, 
+                "Protocol": "-1", 
+                "Egress": false, 
+                "RuleAction": "deny"
+            }, 
+            {
+                "Ipv6CidrBlock": "::/0", 
+                "RuleNumber": 32768, 
+                "Protocol": "-1", 
+                "Egress": false, 
+                "RuleAction": "deny"
+            }
+        ], 
+        "IsDefault": false
+    }
+}
