@@ -66,6 +66,27 @@ aws ec2 create-network-acl-entry --network-acl-id    acl-f769128e   --exgress  -
 aws ec2 replace-network-acl-entry --network-acl-id    acl-f769128e   --ingress  --rule-number 100 --protocol all --port-range From=0,To=65535 --cidr-block 10.16.2.0/24 --rule-action allow
 
 
+17. create security group
+
+aws ec2 create-security-group --group-name mySG1 --description "my security group" --vpc-id vpc-b774aace
+
+18. Create SG inbound (To add a rule that allows inbound SSH traffic)
+
+aws ec2 authorize-security-group-ingress --group-id sg-3fdcc241 --protocol tcp --port 22 --cidr 0.0.0.0/0
+
+19. Create SG inbound (To add a rule that allows inbound HTTP traffic from another security group)
+
+aws ec2 authorize-security-group-ingress --group-id sg-3fdcc241 --protocol tcp --port 80 --cidr 0.0.0.0/0
+
+
+20. 
+
+
+
+
+
+
+
 
 
 
