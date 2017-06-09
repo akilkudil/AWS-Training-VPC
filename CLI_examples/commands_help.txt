@@ -57,6 +57,10 @@ aws ec2  create-network-acl  --vpc-id vpc-b774aace >> c:/Users/admin/AWS-Trainin
 
 15. Create NACL entry (to add a allow or deny rule)
 
+aws ec2 create-network-acl-entry --network-acl-id    acl-f769128e   --ingress  --rule-number 25 --protocol tcp --port-range From=22,To=22--cidr-block 0.0.0.0/0  --rule-action allow
+
+aws ec2 create-network-acl-entry --network-acl-id    acl-f769128e   --ingress  --rule-number 35 --protocol tcp --port-range From=80,To=80--cidr-block 0.0.0.0/0  --rule-action allow
+
 aws ec2 create-network-acl-entry --network-acl-id    acl-f769128e   --ingress  --rule-number 50 --protocol all --port-range From=0,To=65535 --cidr-block 10.16.2.251/32 --rule-action deny
 
 aws ec2 create-network-acl-entry --network-acl-id    acl-f769128e   --exgress  --rule-number 50 --protocol all --port-range From=0,To=65535 --cidr-block 10.16.2.251/32 --rule-action deny
@@ -78,9 +82,18 @@ aws ec2 authorize-security-group-ingress --group-id sg-3fdcc241 --protocol tcp -
 
 aws ec2 authorize-security-group-ingress --group-id sg-3fdcc241 --protocol tcp --port 80 --cidr 0.0.0.0/0
 
+Note: for https use port 443
 
-20. 
 
+20. Create key pair
+
+aws ec2 create-key-pair --key-name MyKeyPair --query 'KeyMaterial' --output text >> C:\Users\admin\AWS-Keypair\MyKeyPair.pem  
+
+aws ec2 create-key-pair --key-name MyKeyPair --query 'KeyMaterial' --output text | out-file -encoding ascii -filepath MyKeyPair.pem  [windows powershell]
+
+21. Launches the specified number of instances using an AMI for which you have permissions.
+
+aws ec2 run-instances  
 
 
 
